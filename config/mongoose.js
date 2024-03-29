@@ -1,18 +1,7 @@
-const mongoose = require('mongoose');
+const { connect, connection } = require('mongoose');
 
-const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    });
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
-  } catch (err) {
-    console.error(`Error: ${err.message}`);
-    process.exit(1); // Exit process with failure
-  }
-};
+const connectionString = 'mongodb://127.0.0.1:27017/socialmediaDB';
 
-module.exports = connectDB;
+connect(connectionString);
+
+module.exports = connection;

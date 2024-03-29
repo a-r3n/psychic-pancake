@@ -10,6 +10,18 @@ module.exports = [
       email: "usertwo@example.com",
       thoughts: [],
       friends: []
+    },
+    {
+      username: "exampleUser",
+      email: "example@user.com",
+      thoughts: [],
+      friends: []
+    },
+    {
+      username: "testUser",
+      email: "test@user.com",
+      thoughts: [],
+      friends: []
     }
   ];
   

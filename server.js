@@ -1,22 +1,16 @@
 // Import necessary modules
 const express = require('express');
-const dotenv = require('dotenv');
 
-// Import the connectDB function
-const connectDB = require('./config/mongoose');
+// Since the connection is established upon requiring the module, 
+// you don't explicitly call connectDB. Require it to ensure the connection is made.
+require('./config/mongoose');
 
 // Import the centralized routes
 const routes = require('./routes');
 
 // Initialize express app
 const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Configure dotenv to load environment variables from .env file
-dotenv.config();
-
-// Connect to MongoDB
-connectDB();
+const PORT = process.env.PORT || 3000; // Ensure you have a way to set PORT in your environment or use the default.
 
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
