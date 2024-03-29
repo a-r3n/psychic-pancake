@@ -47,6 +47,23 @@ const thoughtsController = {
         }
     },
 
+    // React to a thought
+    addReaction: async (req, res) => {
+        try {
+            const updatedThought = await Thought.findByIdAndUpdate(
+                req.params.thoughtId,
+                { $push: { reactions: req.body } },
+                { new: true, runValidators: true }
+            );
+            if (!updatedThought) {
+                return res.status(404).json({ message: 'Thought not found' });
+            }
+            res.status(200).json(updatedThought);
+        } catch (error) {
+            res.status(400).json({ error: error.message });
+        }
+    },
+
     // Delete a Thought
     deleteThought: async (req, res) => {
         try {
